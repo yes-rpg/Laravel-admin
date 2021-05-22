@@ -14,7 +14,8 @@
 Route::prefix('admin')->group(function() {
     Route::get('login','LoginController@loginForm')->name('admin.login');
     Route::post('login','LoginController@login')->name('admin.login');
-    Route::middleware('admin.auth')->group(function(){
+    Route::middleware(['admin.auth'])->group(function(){
         Route::get('/', 'AdminController@index')->name('admin.index');
+        Route::get('init','AdminController@init')->name('admin.init');
     });
 });

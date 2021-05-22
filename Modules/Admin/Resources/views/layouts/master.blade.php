@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="{{ asset('static/admin/css/layuimini.css?v=2.0.1') }}" media="all">
     <link rel="stylesheet" href="{{ asset('static/admin/css/themes/default.css') }}" media="all">
     <link rel="stylesheet" href="{{ asset('static/admin/css/public.css') }}" media="all">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!--[if lt IE 9]>
     <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
     <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
@@ -52,7 +54,7 @@
             miniTongji = layui.miniTongji;
 
         var options = {
-            iniUrl: "{{ asset('static/admin/api/init.json') }}",    // 初始化接口
+            iniUrl: "{{ route('admin.init') }}",    // 初始化接口
             clearUrl: "{{asset('static/admin/api/clear.json')}}", // 缓存清理接口
             renderPageVersion: true,    // 初始化页面是否加版本号
             bgColorDefault: false,      // 主题默认配置

@@ -23,7 +23,9 @@ class AdminFactory extends Factory
     {
         return [
             'username' => $this->faker->name(),
-            'password' => bcrypt('admin888')
+            'password' => bcrypt('admin888'),
+            'last_login_ip' => "127.0.0.1",
+            'last_login_time' => date('Y-m-d H:i:s',time())
         ];
     }
 }

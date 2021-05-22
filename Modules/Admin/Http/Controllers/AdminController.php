@@ -5,6 +5,7 @@ namespace Modules\Admin\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -14,7 +15,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin::index');
+        return view('admin::index.index');
     }
 
     /**
@@ -75,5 +76,34 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * @function  后台框架初始化接口
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function init()
+    {
+//        $data = [
+//           "homeInfo" => [
+//               'title' => "管理后台首页",
+//               "href" => route('admin.index')
+//           ],
+//            "logoInfo" => [
+//                "title" => "LAYUI MINI",
+//                "image"=> "/static/admin/images/logo.png",
+//                "href" => ""
+//            ],
+//            "menuInfo" => [
+//                [
+//                    'title' => '常规管理',
+//                    "icon" => 'fa fa-address-book',
+//                    "href" => "",
+//                ]
+//            ]
+//        ];
+        $file = file_get_contents('static/admin/api/init.json');
+        $data = json_decode($file,true);
+        return response()->json($data);
     }
 }
